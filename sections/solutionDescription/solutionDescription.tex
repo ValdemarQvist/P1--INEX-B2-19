@@ -1,0 +1,46 @@
+\chapter{Solution Description}\label{ch:solutionDescription}
+
+ 
+
+This chapter will introduce and describe the different elements chosen for the final design. Furthermore it will be explained why these parts have been chosen compared to the other possible components.
+
+\section{Final problem formulation}\label{ch:finalproblem}
+%How is it possible to design an autonomous vehicle that can move around in an unknown area. While the vehicle has to autonomously navigate and avoid obstacles.
+%How can a robot be designed so that it can map, move in an unknown area and avoid obstacles? 
+%How is it possible to design a rover that can move in an unknown area while map and avoid obstacles?
+%How is it possible to design a rover that uses SLAM for moving in an unknown area while mapping and avoiding obstacles?
+%It is possible to create a robot with existing solutions, who? can avoid obtacles and map the area by his own in unknown places?
+
+How is it possible to design a rover that uses SLAM for automatically moving in an unknown area while mapping and avoiding obstacles, but also possible to be controlled manually.
+
+
+
+\section{Design delimitation}\label{ch:Designdelimitations}
+
+Below is stated delimitations for the solution proposal:
+
+\begin{itemize}
+    \item The robot has to operate in an unknown outdoor area.
+    \item The robot has to stay clear of obstacles with a height of more than 5 cm. 
+    \item The robot has to be able to climb a grading of 7\% without getting stuck.
+    \item If an obstacle is not avoidable the robots has to call for human interaction.
+    \item The robot may not move more than 5 meters pr 14 minutes due to time delay.
+\end{itemize}
+
+\section{Design Requirement Specifications} \label{ch:Designrequiremnts}
+
+The robot is required to has to be able to be light enough to fit enough scientific tools inside it.\\ 
+It also has to have a height of at least 50 cm distance from ground to chassis. Since the width of the robot should be the same as a car.\\ 
+The robot has to have a field of vision of at least 10 meters, since the hazards of sink holes and cliffs are present.\\
+The maximum velocity of the robot is 0,006 m/s. Due to the fact that it needs to move at a maximum speed of 5 meters per 14 minutes. Hereby the operates have a chance to stop the robot interfering with hazardous areas.\\
+The camera will need a 360 degree of view implemented under the base. A way to apprehend the environment to make damages on this camera is to surround it with acrylic PanzerGlass ( source for self-repairing glass), \cite{Lidar360}.\\ 
+The robot materials has to protect the internal from radiation and help keeping the robot warn. 
+The robot needs a redundant circuit of electronics, if one system breaks down the other one can handle.
+The wheels of the robot needs to have a high friction due to the sand surface on Mars\cite{sand}.
+
+\section{Design proposal}\label{ch:Designproposal}
+
+This section will give a short description of how the robot should function.\\
+The robot needs motors to accelerate, decelerate and overcoming the incline that is set at a maximum of 7\%. For vision the robot will use a LIDAR sensor for detecting and ranging the terrain.\\
+
+An algorithm will have to be chosen for the mapping of an undeveloped environment. Given 
