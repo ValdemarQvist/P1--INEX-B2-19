@@ -1,0 +1,30 @@
+\chapter{Implementation Theory}\label{ch:Implementation Theory}
+%Empty
+
+\section{Hardware}
+For a robot to function as needed, it needs certain components, such as a motor, wheels systems and more. This section will describe the components that has been chosen to be the best solution for INEX.
+
+\subsection{DC motor}
+DC motors have the advantages of higher starting torque, quick starting and stopping, reversing, variable speeds with voltage input and they are easier to control than AC motors. Because the robot needs to have precise movements while using sensitive sensors, using a DC motor will be the best option.
+
+\subsection{LIDAR}
+LIDAR offers a wide variety of hardware to implement. Many of these cameras has a high spinning rate and offers a precise cloud of 3-D data.\\
+These precise readings will help the robot to measure accurate distances towards objects. This will give the robot more maneuverability and make the remote control more manageable when the pictures received are clear. This data cloud will also help the robot to move autonomously.\\
+A good example is the Velodyne HDL-64, which can collect 1.3 million 3-D points per second, and has a rotation rate of 10.4 HZ. With a 360 degree field of vision and looking up to 120 meter into the distance, this would be a very solid hardware implementation for our robot. \cite{Lidar360}
+This is why the LIDAR sensor has been chosen. 
+
+
+\subsection{Wheels}
+For the INEX project, wheels will be used as the means of to deliver traction for the robot, due to the maneuverability, endurance and low weight, See \ref{ch:Wheels}.\\
+The wheels will be made of a hollow mesh that is formed in a wheel Sharp couture, so the wheels is not prone to puncture. Furthermore the wheels needs a design that makes the robot able to move in sand and be able to drive over rocks.  
+
+\subsection{Odometry}
+There is a visual odometry and a wheel based odometry, the aim in this project is to combine the feed from both the visual and wheel based odometry to generate a better localization of the robot in the map.
+%\newline Wheel based odometers function by having 
+
+
+\subsection{RTG}
+RTG offers a dual solution of generating electricity for the rover, but also as a heating component to protect the robots sensory equipment from freezing up.
+
+\newpage
+

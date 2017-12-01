@@ -29,18 +29,16 @@ Below is stated delimitations for the solution proposal:
 
 \section{Design Requirement Specifications} \label{ch:Designrequiremnts}
 
-The robot is required to has to be able to be light enough to fit enough scientific tools inside it.\\ 
-It also has to have a height of at least 50 cm distance from ground to chassis. Since the width of the robot should be the same as a car.\\ 
-The robot has to have a field of vision of at least 10 meters, since the hazards of sink holes and cliffs are present.\\
-The maximum velocity of the robot is 0,006 m/s. Due to the fact that it needs to move at a maximum speed of 5 meters per 14 minutes. Hereby the operates have a chance to stop the robot interfering with hazardous areas.\\
-The camera will need a 360 degree of view implemented under the base. A way to apprehend the environment to make damages on this camera is to surround it with acrylic PanzerGlass ( source for self-repairing glass), \cite{Lidar360}.\\ 
-The robot materials has to protect the internal from radiation and help keeping the robot warn. 
-The robot needs a redundant circuit of electronics, if one system breaks down the other one can handle.
+The robot is required to have enough space to fit scientific tools inside the base.\\  
+The distance between ground and chassis should be at least 50 cm and the width of the robot should be the same as an average car.\\ 
+The robot needs a field of vision of at least 10 meters, since the hazards of sink holes and cliffs should be present.\\
+The maximum velocity of the robot should be 0,006 m/s so the operators have a chance to stop the robot interfering with hazardous areas.\\
+The camera will need a 360 degree of view implemented under the base. A way to apprehend damages to the camera by the environment, the camera will be surrounded with acrylic panzer glass \todo{source for self-repairing glass}\cite{Lidar360}.\\ 
+The robots internal has to be protected from radiation, since radiation can be more or less damaging to different materials\cite{radiationEffectsInMaterials}.\\
+The robot needs a redundant circuit of electronics, such as if the system breaks down a backup system can still operate the robot.\\
 The wheels of the robot needs to have a high friction due to the sand surface on Mars\cite{sand}.
 
 \section{Design proposal}\label{ch:Designproposal}
-
 This section will give a short description of how the robot should function.\\
 The robot needs motors to accelerate, decelerate and overcoming the incline that is set at a maximum of 7\%. For vision the robot will use a LIDAR sensor for detecting and ranging the terrain.\\
-
-An algorithm will have to be chosen for the mapping of an undeveloped environment. Given 
+For the robot to move through the perceived environment, it will need a algorithm to assist moving autonomously.\\
