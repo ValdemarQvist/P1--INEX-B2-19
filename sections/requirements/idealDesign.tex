@@ -1,11 +1,11 @@
-\chapter{Implementation Theory}\label{ch:Implementation Theory}
+\chapter{Ideal Design}\label{ch:Implementation Theory}
 %Empty
 
 \section{Hardware}
 For a robot to function as needed, it needs certain components, such as a motor, wheels systems and more. This section will describe the components that has been chosen to be the best solution for INEX.
 
-\subsection{DC motor}
-DC motors have the advantages of higher starting torque, quick starting and stopping, reversing, variable speeds with voltage input and they are easier to control than AC motors. Because the robot needs to have precise movements while using sensitive sensors, using a DC motor will be the best option.
+\subsection{DC brushless motor}
+DC brushless motors have the advantages of higher starting torque, quick starting and stopping, reversing, variable speeds with voltage input and they are easier to control than AC motors. Because the robot needs to have precise movements while using sensitive sensors, using a DC bruushless motor will be the best option.
 
 \subsection{LIDAR}
 LIDAR offers a wide variety of hardware to implement. Many of these cameras has a high spinning rate and offers a precise cloud of 3-D data.\\
@@ -22,9 +22,15 @@ The wheels will be made of a hollow mesh that is formed in a wheel Sharp couture
 There is a visual odometry and a wheel based odometry, the aim in this project is to combine the feed from both the visual and wheel based odometry to generate a better localization of the robot in the map.
 %\newline Wheel based odometers function by having 
 
-
 \subsection{RTG}
 RTG offers a dual solution of generating electricity for the rover, but also as a heating component to protect the robots sensory equipment from freezing up.
 
-\newpage
-
+\section{Design Requirement Specifications} \label{ch:Designrequiremnts}
+The robot is required to have enough space to fit scientific tools inside the base.\\  
+The distance between ground and chassis should be at least 50 cm and the width of the robot should be the same as an average car.\\ \todo{Check is curiosity's size}
+The robot needs a field of vision of at least 10 meters, since the hazards of sink holes and cliffs should be present.\\
+The maximum velocity of the robot should be 0,006 m/s so the operators have a chance to stop the robot interfering with hazardous areas.\\
+A camera with 360 degree of view should be implemented under the base. A way to apprehend damages to the camera by the environment, the camera will be surrounded with acrylic panzer glass\cite{Lidar360}.\\ 
+The robots internal has to be protected from radiation, since radiation can be more or less damaging to different materials\cite{radiationEffectsInMaterials}.\\
+The robot needs a redundant circuit of electronics, such as if the system breaks down a backup system can still operate the robot.\\
+The wheels of the robot needs to have a high friction due to the sand surface on Mars\cite{sand}.
