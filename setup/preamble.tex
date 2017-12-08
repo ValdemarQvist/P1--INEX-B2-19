@@ -15,6 +15,7 @@
 %  You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
 %
 \documentclass[11pt,oneside,a4paper,openright]{report}
+%\documentclass[conference]{IEEEtran}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Language, Encoding and Fonts
 % http://en.wikibooks.org/wiki/LaTeX/Internationalization
@@ -54,6 +55,7 @@
 \usepackage{graphicx}
 % Set up how figure and table captions are displayed
 \usepackage{caption}
+\usepackage{subcaption}
 \captionsetup{%
   font=footnotesize,% set font size to footnotesize
   labelfont=bf % bold label (e.g., Figure 3.2) font
@@ -128,6 +130,7 @@
   bibencoding=utf8
   ]{biblatex}
 \addbibresource{bib/mybib}
+\usepackage[utf8]{inputenc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Misc
