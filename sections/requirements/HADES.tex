@@ -1,0 +1,61 @@
+\chapter{Hades}
+
+Hades is the ideal robot. This is the robot the group wants to send up on Mars.\\
+Here is a short introduction to the different parameters, that should be implemented in Hades.\\
+
+\section{Detection}
+In chapter \ref{ch:detectionHades}, the detection of Hades will be stated.\\
+Here the previous mentioned sensors and software for detection will be elected towards the most efficient way of detecting obstacles.\\
+
+\section{Pathplanning}
+In chapter \ref{ch:PathplanningHades}, the pathplanning software of Hades will be mentioned and elaborated on.\\
+This will explain the solution towards pathplanning in an unknown environment.\\
+
+\section{Movement}
+The ideal hardware design, and how to control it, for Hades will be stated in chapter \ref{ch:MovementHades}.\\
+This will give a conclusion to the hardware design and why the group chose the different components.\\
+
+\section{Conclusion}
+To conclude, the different components and software will be reviewed and implemented in the chapters below.\\
+To conclude properly the group will then refer to the requirements for Hades.\\
+
+\section{Design Requirement Specifications} \label{ch:Designrequiremnts}
+\begin{itemize}
+    \item The robot is required to have enough space to fit scientific tools inside the base. 
+    \item The distance between ground and chassis should be at least 50 cm and the width of the robot should be the same as an average car. 
+    \item The robot needs the vision of the distance of at least 10 meters, since the hazards of sink holes and cliffs should be present.
+    \item The maximum velocity of the robot should not exited 0.01 m/s so the operators have a chance to stop the robot interfering with hazardous areas.
+    \item A camera with 360 degree of view should be implemented under the base. A way to apprehend damages to the camera by the environment, the camera will be surrounded with acrylic panzer glass\cite{Lidar360}.
+    \item The robots internal has to be protected from radiation, since radiation can be more or less damaging to different materials\cite{radiationEffectsInMaterials}.
+    \item The robot needs a redundant circuit of electronics, such as if the system breaks down a backup system can still operate the robot.
+    \item The wheels of the robot needs to have a high friction due to the sand surface on Mars\cite{sand}.
+\end{itemize}
+
+\chapter{Detection Hades} \label{ch:detectionHades}
+
+In this chapter the implementation of sensors and detection software will be overlooked and referred to the requirements.\\
+
+\section{LIDAR}
+To get a accurate 3-D image of a distance-view of above 10 meters \ref{ch:Designrequiremnts}, Hades will need a LIDAR sensor.\\
+LIDAR offers a wide variety of hardware to implement. Many of these cameras has a high spinning rate and offers a precise cloud of 3-D data.\\
+These precise readings will help the robot to measure accurate distances towards objects. This will give the robot more maneuverability and make the remote control more manageable when the pictures received are clear. This data cloud will also help the robot to move autonomously.\\
+A good example is the Velodyne HDL-64, which can collect 1.3 million 3-D points per second, and has a rotation rate of 10.4 HZ. With a 360 degree field of vision and looking up to 120 meter into the distance, this would be a very solid hardware implementation for Hades. \cite{Lidar360}\\
+This is why the LIDAR sensor has been chosen.\\
+
+\section{}
+%maybe more for detection?
+
+
+\section{Conclusion}
+
+
+\chapter{Pathplanning Hades} \label{ch:PathplanningHades}
+
+In this chapter software for pathplanning will be stated and reviewed with respect to the \ref{ch:Designrequiremnts}.
+
+\section{}
+
+
+\chapter{Movement Hades} \label{ch:MovementHades}
+
+In this chapter the different movement components will be stated.\\

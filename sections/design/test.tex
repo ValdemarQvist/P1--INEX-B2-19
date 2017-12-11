@@ -1,5 +1,7 @@
 \chapter{Test}
 \section{Test site}
+The test site consist of the obstacles stated in table \ref{tab:obstacles}. Pictures of the test site can be found in chapter \ref{ch:testSite}.
+
 \begin{table} [h]
     \centering
     \begin{tabu} to 1\textwidth { | X[c] | X[c] | X[c] | }
@@ -23,10 +25,15 @@
      Lower staircase  & Length 600cm & Depth 18cm \\
      \hline
     \end{tabu}
-     \label{tab:Obstecals1}
+    \caption{Table of the sizes of all obstacles from the test site}
+    \label{tab:obstacles}
 \end{table}
-\ref{fig:testsite2}
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{figures/layout.jpg}
+    \caption{Test site layout} 
+    \label{fig:layout} 
+\end{figure}
 %
 % Test 1
 %
@@ -57,19 +64,17 @@ Since it was controlled manually, it could not measure itself towards the obstac
 
 \subsection{2nd run}
 What was done:\\
-The turtlebot velocity was set to 0.8 m/s and steered as mentioned in 1st run.\\
+The turtlebot velocity was set to 0.8 m/s and steered as mentioned in the 1st run.\\
 What happened:\\
-The turtlebot  had to be stopped a couple of times due to the high speed. When using the \texttt{teleop} package, the turtlebot experienced some delay, and when turning and moving forward it was a problem to stop.\\
+The turtlebot  had to be stopped a couple of times due to the high speed. When using the \texttt{teleop} package, the turtlebot experienced some delay, and when turning and moving forward it was a problem to stop.
 
 \subsection{3rd run}
 What was done: \\
-In this test the velocity was set to 0.4 m/s and steered as mentioned in 1st run. There was also an attempt to see if the cliff sensor worked in manual mode.\\
+In this test the velocity was set to 0.4 m/s and steered as mentioned in the 1st run. There was also an attempt to see if the cliff sensor worked in manual mode.\\
 What happened:\\
 The turtlebot had no problems being controlled, but the cliff sensor did not work since the host computer did not run \textit{g\_mapping} node. 
 
-\subsection{Reflection of test 1}
-The turtlebot had difficulties in being controlled when the speed was higher than 0.4 m/s. By driving with a slower speed, the turtlebot would be easier to control.
-The group experienced to be more careful with the controls when driving at a high speed, since the turtlebot had a delay time and did not react immediately.
+
 
 %
 % Test 2
@@ -95,18 +100,15 @@ The turtlebot had no problems being controlled manually and it detected the obst
 
 \subsection{2nd run}
 What was done:\\
-The speed was changed to 0.8 m/s and steered as mentioned in 1. run.\\
+The speed was changed to 0.8 m/s and steered as mentioned in the 1st run.\\
 What happened:\\
 The turtlebot had difficulties being controlled manually and the mapping in Rviz could not keep up with the turtlebot's movements. The turtlebot could, with this speed, easier drive over the carpet than with the slower speed.
 
 \subsection{3rd run}
 What was done:\\
-The speed was changed to 0.2 m/s and steered as mentioned in 1. run.\\
+The speed was changed to 0.2 m/s and steered as mentioned in the 1st run.\\
 What happened:\\
 Because of the slower speed in 3rd run, Rviz had a chance to keep up with the turtlebot's mapping, which resulted in the map being more detailed compared to 2nd run. The robot had difficulties driving over carpet, but succeeded after trying two times.
-
-\subsection{Reflection of Test 2}
-When the turtlebot was moving faster, the Rviz had difficulties keeping up with the robots movements and also with making the map. Rviz is not working as fast as it would need to, when the turtlebot moves with a speed of 0.8 m/s or faster. The turtlebot had complications driving over the carpet with a speed of 0.2 m/s but none with a speed of 0.4 m/s and faster.
 
 %
 % Test 3
@@ -119,113 +121,89 @@ Purpose of test 3: Path-planning, the movement of base autonomously.
 3. \texttt{roslaunch turtlebot\_navigation gmapping\_demo.launch}\\
 On the user computer the commands is written in the terminal:\\
 1. \texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch.}\\
-A window will appear with robot vision, using nav 2D goal to make a path for the turtlebot.\\
+A window will appear with robot vision, using nav 2D goal to make a path for the turtlebot.
 
 \subsection{1st run}
 What was done:\\
 The software capability to autonomously navigate the robot around objects towards a goal was tested.\\
- 
 What happened:\\
 Max\_vel\_x was set as default.\\
-\\It was able to map and detect  the soccer table, which it managed to drive under on its route towards its goal. It also detected the carpet, which it managed to pass over, but upon detecting the difference in surface friction on top of the carpet, it stopped momentarily, before it continued on its path.\\
-
-we had to stop the test, because a lot of people had to pass through, and the software had trouble managing so many moving obstacles around its sensor.
+It was able to map and detect  the soccer table, which it managed to drive under on its route towards its goal. It also detected the carpet, which it managed to pass over, but upon detecting the difference in surface friction on top of the carpet, it stopped momentarily, before it continued on its path.\\
+The test was stopped, since a lot of people was passing through and the software had trouble managing so many moving obstacles around its sensor.
 
 \subsection{2nd run}
 What was done:\\
-Max\_vel\_x parameter was changed to 0.2, to see if the robot reacted differently with a lower velocity.
-\\
+Max\_vel\_x parameter was changed to 0.2, to see if the robot reacted differently with a lower velocity.\\
 What happened:\\
-With the low velocity, the robots mapping process was more detailed. Which resulted in the sensors observed the obstacles and avoided accordingly.\\ 
-\\
+With the low velocity, the robots mapping process was more detailed. Which resulted in the sensors observed the obstacles and avoided accordingly.
+
 \subsection{3rd run}
 What was done:\\
-Max\_vel\_x parameter was changed to 0.005, to see if the robot reacted differently with such a low velocity.
-\\
+Max\_vel\_x parameter was changed to 0.005, to see if the robot reacted differently with such a low velocity.\\
 What happened:\\
-The test failed due to the velocity setting was too low.\\
+The test failed due to the velocity setting was too low.
 
-\subsection{Reflection of Test 3}
-
-The test showed that, with the parameter Max\_vel\_x 0.2 the turtlebot made a detailed map and could avoid obstacles ease.\\
-One test showed that, the parameter Max\_vel\_x can be set to low.\\
+%
+% Test 4
+%
 
 \section{Test 4} 
 What is the purpose of test 4:\\
-Testing out frontier exploration will combine test 1, 2 and 3. Detecting Obstacles.\\ The host computer got the commands:\\
+Testing out frontier exploration will combine test 1, 2 and 3. Detecting Obstacles.\\ 
+The host computer got the commands:\\
 1.\texttt{roscore} 
 2.\texttt{roslaunch\_bringup minimal.launch}\\
 3.\texttt{roslaunch turtlebot\_navigation gmapping\_demo.launch}\\
 The user computer was given the commands in two different terminals:\\
 1.\texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch}\\
 2.\texttt{roslaunch turtlebot\_samples exploration.launch}\\
-Here it should be possible to make a polygon area in Rviz by using publishing points, that the robot will explore.\\
+Here it should be possible to make a polygon area in Rviz by using publishing points, that the robot will explore.
 
 \subsection{1st run}
 What was done:\\
-The unknown environment was set up by rebooting \texttt{bringup minimal launch}.\\ 
-The group then entered a polygon with the publish points in Rviz, to make the robot explore that environment.
+A unknown environment was set up.\\ 
+The group then entered a polygon with the publish points in Rviz, to make the robot explore that environment, with the speed at a default setting at 0.55.\\
+What happened:
+The turtlebot 
 \\
-What happened:\\
 
-\\
+
 \subsection{2nd run}
 What was done:\\
 The robot was again set to explore a new area. The velocity was set to 0.2.\\
 In this test the group wanted to see whether the cliff sensor worked.\\
-\\
 What happened:\\
 In this test, the navigation failed. There was a lot of different people that kept on passing the sensor. We observed that the robot made a static wall in the map due to all the passing people, and it would not drive further.\\
-The group pinpointed a location for the robot to start driving, which was the lower staircase. The robot would then drive until the infrared sensor underneath its chassis could sense a drop, then it would redo this until it was parallel with the staircase.\\
-\\
+The group pinpointed a location for the robot to start driving, which was the lower staircase. The robot would then drive until the infrared sensor underneath its chassis could sense a drop, then it would redo this until it was parallel with the staircase.
+
 \subsection{3rd run}
 What was done:\\
-The robot was again set to explore a new area. The velocity was set to 0.8.
-\\
+The robot was again set to explore a new area. The velocity was set to 0.8.\\
 What happened:
 In this run with 0.8, the turtlebot had difficulty in making a route to follow. It failed to explore any part of the selected area, it went into recovery mode and stopped working.
-\\
-\subsection{Reflection of Test 4}
 
-Test 4 showed that the robot with the parameter set as 0.2 would make a faster path-plan and a more detailed map. It would also avoid obstacles that was difficult to detect for the robot, such as a staircase with no connection to the ground.\\ \\
-This is the most efficient settings that have been tested on the turtlebot so far.\\
+%
+% Test 5
+%
 
-\section{Test 5}%There is no day like today
-
+\section{Test 5}
 What is the purpose of test 5: \\
 Redoing test 4, but with extra weight.
+
 \subsection{1st run}
-What was done:havent don yet
+What was done:havent done yet
 \\
-What happened:havent don yet
-\\
+What happened:havent done yet
+
 \subsection{2nd run}
-What was done:havent don yet
+What was done:havent done yet
 \\
-What happened:havent don yet
-\\
+What happened:havent done yet
+
 \subsection{3rd run}
-What was done:havent don yet
+What was done:havent done yet
 \\
-What happened:havent don yet
+What happened:havent done yet
 
-%\section{Discussion of test 1}
-%What worked : \\
-%What did not work : \\ 
 
-%\section{Discussion of test 2}
-%What worked : \\
-%What did not work : \\ 
-
-%\section{Discussion of test 3}
-%What worked : \\
-%What did not work : \\ 
-
-%\section{Discussion of test 4}
-%What worked : \\
-%What did not work : \\ 
-
-%\section{Discussion of test 5}
-%What worked : \\
-%What did not work : \\ 
 

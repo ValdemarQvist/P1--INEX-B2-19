@@ -66,12 +66,8 @@ By comparing data from sensors to the known map, it measures how far it has move
 %
 %
 \section{Movement}
-The PWM signal is used for brushless motor controller as the H-bridge that controllers the motor of the turtlebot. PWM works by a electronic switch is toggle on and off, x amount of times per second. This cycle is called a Duty cycle, if this duty cycle is on 25\% of the duty cycle and the source for the is 5 volt. It is possible to calculate the output by multiplying the duty cycle on time in percent and the source voltage. The H-bridge is made in IC format but can be made from two MOSFET-P and two MOSFET-N combine see fig\ref{fig:Hbridge}. only one MOSFET may be use at each side of this H-bridge, if both on the same side is leading current through they will be a short circuit.If the MOSFET-P on the right side it will lead the power on way through motor resulting in the motor rotates one direction and the opposite way when the MOSFET-P on the left side is active\cite{H-bridge}. 
-\begin{figure}
-    \centering
-    \includegraphics[width=.7\textwidth]{figures/H-brige.png}
-    \caption{Made at CircuitLab} 
-    \label{fig:Hbridge} 
-\end{figure}
+
+To move the turtlebot manually, the user can through the terminal give velocity commands to the robot. When using frontier exploration node, the user appoints an area to be searched in Rviz. The frontier node calculate a small path to be explored, this gets translated into velocity commands by the move\_base node. The velocity commands gets converted into a PWM signal for the motor driver for the turtlebot.
+
 
 - Test
