@@ -1,4 +1,5 @@
 \chapter{Reduced Requirement set} \label{ch:Reduced Requirement Set}
+Since the project have the turtlebot to work with, not all of the preferred requirements for Hades is possible. In this chapter turtlebot and its requirements will be described.
 
 \section{Turtlebot} %introduction
 A Turtlebot is a prototype robot made for developers. In this project the Turtlebot will be used to test the different implementations which the project needs, due to the immense task of building a real rover in time for this project.\\
@@ -15,8 +16,6 @@ The base is a Kobuki that is made for prototyping and educational use. The base 
 The base has three cliff sensors these sensors are located in the center and to left and right. The base has a wheel drop sensor that detect if a wheel has dropped into a hole. The Base wheels can drive over obstacles with a height of 12mm and the base can clear obstacle with a height of 15 mm. The base has two different batteries both on 14.8 VDC one has a capacity of 2200 mAh and the second one has a capacity of 4400 mAh.\\ 
 The load capacity of the turtlebot is 5 kg on hard surface and on soft surfaces the load capacity is 4kg\cite{Base}.
 
-
-
 \subsection{Computer} 
 The computer is an ASUS notebook, it has an Intel core i3-4010U CPU that has 2 cores and operate at 1.7MHz\cite{CPU}. The notebook has 4GB RAM and an integrated HD graphics card on the motherboard\cite{ASUS}.
 The operating system is Ubuntu 16.04 LTS a layer for the Linux distribution. For communication between the sensors and the Turtlebot, the computer uses USB 2.0.
@@ -27,8 +26,9 @@ The operating system is Ubuntu 16.04 LTS a layer for the Linux distribution. For
     \label{fig:ASUS}
 \end{figure}
 
-\section{Requirements}
 
+\section{Requirements for the turtlebot}\label{ch:Requirements for the turtlebot}
+It is required for the turtlebot to do the following:
 \begin{itemize}
     \item Have communication between host and user computer. 
     \item Have manual control.

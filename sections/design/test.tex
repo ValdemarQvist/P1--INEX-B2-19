@@ -34,6 +34,8 @@ The test site consist of the obstacles stated in table \ref{tab:obstacles}. Pict
     \caption{Test site layout} 
     \label{fig:layout} 
 \end{figure}
+
+\newpage
 %
 % Test 1
 %
@@ -152,7 +154,7 @@ What is the purpose of test 4:\\
 Testing out frontier exploration will combine test 1, 2 and 3. Detecting Obstacles.\\ 
 The host computer got the commands:\\
 1.\texttt{roscore} 
-2.\texttt{roslaunch\_bringup minimal.launch}\\
+2.\texttt{roslaunch turtlebot\_bringup minimal.launch}\\
 3.\texttt{roslaunch turtlebot\_navigation gmapping\_demo.launch}\\
 The user computer was given the commands in two different terminals:\\
 1.\texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch}\\
@@ -164,8 +166,7 @@ What was done:\\
 A unknown environment was set up.\\ 
 The group then entered a polygon with the publish points in Rviz, to make the robot explore that environment, with the speed at a default setting at 0.55.\\
 What happened:
-The turtlebot 
-\\
+In this run the robot behaved nicely with the exploration node, but when it was forced to go out over the stairs via 2d nav, the robot wend into recovery mode and failed to continue. A reboot was necessary to make the turtlebot react normal again
 
 
 \subsection{2nd run}

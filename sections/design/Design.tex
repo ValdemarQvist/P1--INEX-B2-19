@@ -1,14 +1,13 @@
 \chapter{Design}
 \label{ch:design}
+The design of the components used for making a robot that will be able to fulfill the requirements in section \ref{ch:Requirements for the turtlebot}, is described in this chapter.
 
 %
-%
+% 
 % DETECTION
 %
 %
-\section{Detection}
-
-\subsection{Vision sensor} %ASUS camera
+\section{Detection} 
 The Turtlebot uses The ASUS Xtion PRO LIVE as its vision. Xtion PRO LIVE has two microphones in each side, see figure \ref{fig:asusCamera} nr. 1. Additionally the Xtion PRO LIVE has an RGB camera with a resolution of 640px x 480px at 30 fps, see figure \ref{fig:asusCamera} nr. 3. Furthermore there is a depth camera that has a resolution of 640px x 480px at 30 fps or 320px x 240px at 60 fps, see figure \ref{fig:asusCamera} nr. 2 and 4.
 It has a vision distance range from 0.85 m up to 3.5 m and have a field of vision 58° Horizontal, 45° Vertical, 70° Diagonal.
 This camera is only for indoor use \ref{ch:CameraRGB}.
@@ -21,9 +20,6 @@ This camera is only for indoor use \ref{ch:CameraRGB}.
 
 %bumber sensor
 
-- Data\\
-- Test\\
-
 %
 %
 % PATH-PLANNING
@@ -31,10 +27,12 @@ This camera is only for indoor use \ref{ch:CameraRGB}.
 %
 \section{Path-planning}
 
-\subsection{Frontier\_Exploration}
-Frontier\_Exploration package will be used as a algorithm for our robot to navigate through a perceived environment.\\
+
+\subsection{Frontier\_exploration}
+Frontier\_Exploration package will be used as a algorithm for Hades to navigate through a perceived environment.\\
 The Package provides a costmap\_2D, client/server nodes and Layer BoundedExplorerLayer. The BoundedExplorerLayer can be used for many complex explorations, functioning by two services. Updatepolygonfrontier, this is where the input is telling the robot which area to scan. Then the service GetNextFrontier, will wait for user input and then run the first service again.\\
 The robot in this project has no global map, which means the robot should be able to create the map on its own. This can be done autonomously by publishing a starting point, it will then determine its own path and act accordingly. Furthermore, it will still be able to allow user input, such as a published polygons\cite{ROSexploration}.\\
+For creating a map in an uknown environment, this has been chosen.
 
 \subsection{ROS}
 ROS is used to interact with robots. This operation system comes with a collection of libraries and different commands to execute the communication.\\
@@ -57,9 +55,6 @@ By comparing data from sensors to the known map, it measures how far it has move
     \label{fig:amcl} 
 \end{figure}
  During operation, AMCL estimates the transformation of the base frame in respect to the global frame. But it only publishes the transformation between the global frame and the odometry frame\cite{AMCL}.\\
-
-- Test
-
 %
 %
 % MOVEMENT
@@ -69,5 +64,3 @@ By comparing data from sensors to the known map, it measures how far it has move
 
 To move the turtlebot manually, the user can through the terminal give velocity commands to the robot. When using frontier exploration node, the user appoints an area to be searched in Rviz. The frontier node calculate a small path to be explored, this gets translated into velocity commands by the move\_base node. The velocity commands gets converted into a PWM signal for the motor driver for the turtlebot.
 
-
-- Test
