@@ -1,0 +1,24 @@
+\chapter{Discussion}
+What went wrong and what went as expected in the tests, will be discussed here.
+
+\section{Test 1}
+The turtlebot was placed near the router and with manual control, moved 8 m in the opposite direction. There was no loss of connection during this. The robot could be controlled with a distance of 8 m from the router without problems.
+
+\section{Test 2}
+Before doing any tests with the \textit{frontier\_exploration} node, this node is tested. As expected, the turtlebot explored the selected 5x5 m area and proved the test true.
+
+\section{Test 3}
+It was expected of the robot to move at least 5 m in 1 min. The robot was double as fast as the requirement. Beside the 5 m goal made for the robot to surpass, there was a rug. Since the robot was not driving in the exact direction as expected, it had to drive over the rug for the last few centimeters. This may have effected the time to be slower.
+
+\section{Test 4}
+The requirement for this test was to turn the robot 360${^\circ}$ within one minute. It was expected to be possible and was proven true, by being about six times faster than what the requirement stated.
+
+\section{Test 5}\label{ch:discussionTest5}
+It was required for the robot to detect obstacles taller than 16 cm. First it was tested for the robot to detect a beer can with the size of 16x3 cm. The robot could not detect the object. This may be because the camera could not capture anything below the distance from ground to camera, which is 35 cm. It could also be because of the reflective surface of the beer can. We chose to use a wooden pole with the height of 41 cm, which the turtlebot was able to detect.
+
+\section{Test 6}
+It was expected for the turtlebot to detect the wooden pole withing the 3.3 m distance. This was proven true.
+
+\section{Test 7}
+The turtlebot was placed 2 m from the edge of the stairs and was expected to detect the ledge at this distance. The robot did detect the ledge but did not stop when tried to explore further. It drove all the way to the edge. Using its cliff sensors, the turtlebot was able stop beforehand and not to drive down the stairs.
+

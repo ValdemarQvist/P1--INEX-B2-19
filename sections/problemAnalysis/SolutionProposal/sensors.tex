@@ -1,14 +1,14 @@
 \chapter{Technical Analysis}\label{ch:solutionProposal}
-This chapter will propose different types of sensors, wheel systems and energy sources, general materials and software.
+This chapter will propose different types of sensors, wheel systems, energy sources, general materials and software.
 
 \section{Sensors}
-Hades will need sensors to scan its surrounding area for mapping and obstacle avoidance.
+For a robot to scan its surrounding area for mapping and obstacle avoidance, it requires sensors to do so.
 
 \subsection{Radar}
-Radars use a highly concentrated radio wave, if there's any obstacles on its way, it will reflect electromagnetic energy. The sensor will then pick up the signalling energy and measure the time spent on getting the "echo" back\cite{Radar}.
+Radars use a highly concentrated radio wave, if there are any obstacles in its way, they will reflect electromagnetic energy. The sensor will then pick up the signalling energy and measure the time spent on receiving the echo\cite{Radar}.
 The further away the transmission has to be sent, the lower the frequency has to be.\\
 Satellites are typically using C-band ( 300 MHz - 1 GHz ). 
-For avoidance on the other hand, it will be of higher frequencies, since the system has to maneuver at high accuracy. This frequency for avoidance will generalized be at I- or J-band (8-12 GHz)\cite{RadarTutorial}.
+For avoidance on the other hand, it will be of higher frequencies, since the system has to maneuver at high accuracy. This frequency for avoidance will be generalized at I- or J-band (8-12 GHz)\cite{RadarTutorial}.
 
 %\begin{figure}[h]
     %\centering
@@ -18,15 +18,15 @@ For avoidance on the other hand, it will be of higher frequencies, since the sys
 %\end{figure}
 
 
-\subsection{LIDAR}
-LIDAR offers a wide variety of hardware to implement. Many of these cameras has a high spinning rate and offers a precise cloud of 3-D data. These precise readings will help the robot to measure accurate distances towards objects. This will give the robot more maneuverability and make the remote control more manageable when the pictures received are clear. The 3-D data cloud will also help the robot to move autonomously.\\
-A good example is the Velodyne HDL-64, which can collect 1.3 million 3-D points per second, and has a rotation rate of 10.4 HZ. With a 360 degree field of vision and looking up to 120 meter into the distance, this would be a very effecient hardware implementation. \cite{Lidar360}
+\subsection{LIDAR}\label{ch:sensorLidar}
+LIDAR offers a wide variety of hardware to implement. Many of these cameras have a high spinning rate and offers a precise cloud of 3D data. These precise readings will help the robot to measure accurate distances towards objects. This will give the robot more maneuverability and make the remote control more manageable when the pictures received are clear. The 3D data cloud will also help the robot to move autonomously.\\
+A good example is the Velodyne HDL-64, which can collect 1.3 million 3D points per second, and has a rotation rate of 10.4 HZ. With a 360${^\circ}$ field of vision and looking up to 120 meter into the distance, this would be a very effecient hardware implementation. \cite{Lidar360}
 
 \subsection{Cameras (RGB-D)} \label{ch:CameraRGB}
 A RGB-D camera gives a color image and provides a depth per pixel. This project will use an RGB-D.
 The RGB-D has a color camera and is based on PrimeSense patent.  
 PrimeSense uses a sensor that projects an infrared speckle pattern and an IR camera will then capture the pattern. This is called structured light. This light will project a triangular image for the image sensor processor to process. It will then derive the range and bearing for the illuminated object from the beam of structured light and match it to the current position of the vehicle\cite{Lasers}.\\
-Comparing each point collected and the stored pattern in the RGB-D camera, that is calibrated to a known depth, the RGB-D camera produce an image with depth information for each pixel\cite{RGB-D-new}.
+Comparing each point collected and the stored pattern in the RGB-D camera, which is calibrated to a known depth, the RGB-D camera produces an image with depth information for each pixel\cite{RGB-D-new}.
 %A downside to the IR cameras is that it does not work well in sunlight. This is because the infrared light rays interferes with the IR camera\cite{IR}.
 
 \subsection{Ultrasonic sensors}

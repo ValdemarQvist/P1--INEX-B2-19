@@ -1,59 +1,20 @@
 \chapter{Design of Hades}
-Hades is the robot b2-19 wants to send up on Mars.\\
-Here is a short introduction to the different parameters, that should be implemented in Hades.
-
-\section{Detection} \label{ch:detectionHades}
-In this section the implementation of sensors for detection will be overlooked and referred to the requirements.
-
-\subsection{LIDAR}
-To get a accurate 3-D image of a distance-view of above 10 meters, see \ref{ch:Designrequiremnts}, Hades will need a LIDAR sensor.
-
-\subsection{Radar}
-Radars use concentrated radio waves, these waves can be transmitted with a high or low frequency.\\ 
-To avoid obstacles the radio wave is typically at a frequency of a I or J band. This means that the high frequency will measure the electromagnetic energy emitted with higher accuracy.\\
-This is what has been chosen since it has such highly concentrated waves, see chapter \ref{ch:solutionProposal}.\\
-To collect a 360 field of view, the radars will be set up in a manner that the degree of vision would be equal to 360 see \ref{ch:Designrequiremnts}.
-
-
-\subsection{Conclusion}
-Solutions to the requirement of distance and 360 degrees of cameras and sensors, will be fulfilled by either one of the options.\\
-The LIDAR and Radar has been chosen to cover and fulfill the detection requirements for Hades.
-
-\section{Movement} \label{ch:MovementHades}
-
-In this section the different movement components will be stated.
-
-\subsection{Odometry}
-There is a visual odometry and a wheel based odometry. The aim in this project is to combine the feed from both the visual and wheel based odometry to generate a better localization of the robot in the map.
-
-\subsection{Wheels}
-For the HADES project, wheels will be used as the means of to deliver traction for the robot, due to the maneuverability, endurance and low weight, See \ref{ch:Wheels}.\\
-The wheels will be made of a hollow mesh that is formed in a wheel Sharp couture, so the wheels is not prone to puncture. Furthermore the wheels needs a design that makes the robot able to move in sand and be able to drive over rocks, see \ref{ch:Designrequiremnts}. \\
-As stated the wheels is equipped with odometry and should therefor be able to detect itself in the perceived map. Hereby, with help from the sensors, Hades should be able to stop before entering hazardous environments.
-
-\subsection{Position}
-
-The position or pose as called in robotics. The position description is  depending on how many planes Hades has to traverse. If Mars's surface is was totally flat, Hades would move in a bi-dimensional space, but Hades has to traverse an euclidean space due to Mars environment \ref{ch:environmentOnMars}.
-In an euclidean space the axis is called x,y and z. The mathematical expression for the robot is by given the x,y and z coordinates and the heading is given by an angle theta.
-%RTG offers a dual solution of generating electricity for Hades, but also as a heating component to protect the robots sensory equipment from freezing up.
-
-\subsection{Conclusion}
-With respect to \ref{ch:Designrequiremnts}, the wheels will have a high friction due to the hollow mesh wheels.\\
-Furthermore the problem with self-triangulating towards hazardous environments, the odometry will be chosen so that this will fulfill the requirements.\\
-
+This is the robot b2-19 wants to send up to Mars, called Hades. Here is a short introduction to the different parameters, which should be implemented in Hades.
 
 \section{Design Requirement Specifications} \label{ch:Designrequiremnts}
 \begin{itemize}
- 
-    %\item The robot has to avoid driving over obstacles with a height of more than 1.5 cm.
-    \item The robot has to avoid obstacles with a distance of 20 cm away from the obstacles.
-    \item It has to be able to move 5 meters in 1 min.
-    \item It has to be able to turn 360$^{\circ}$ in under a minute.
-    \item The robot needs to be able to detect obstacles, with a minimum height 16cm and a radius of 3 cm, at a distance of up to 10 meters.
-    \item From previous solutions Chapter \ref{ch:existingSolutions} a camera with 360 degree of view should be implemented under the base\cite{Lidar360}.
-    \item The wheels of the robot should be able to drive on sand surfaces with a friction coefficient of at least 0.25 \cite{sand}.
 
-     %\item The robot is required to have enough space to fit scientific tools inside the base. 
+    \item The robot needs to have a clear communication from Earth to Mars.
+    \item The robot has to avoid  obstacles with a height of more than 16 cm and width of 20 cm, with a distance of 20 cm away from the obstacles.
+    \item It has to be able to move 5 meters in 1 min.
+    \item It has to be able to turn 360$^{\circ}$ in less than a minute.
+    \item The robot has to be able to detect obstacles, with a minimum height of 16 cm and a radius of 3 cm, at a distance of up to 10 m.
+    \item The robot has to be able to detect ledges at a minimum distance of 2 meters. 
+    \item From previous solutions, read section \ref{ch:sensorLidar}, a camera with 360${^\circ}$ of view should be implemented under the base \cite{Lidar360}.
+    \item The wheels of the robot should be able to drive on the sand surfaces with a friction coefficient of at least 0.25 see \ref{soil} \cite{sand}.
+    \item The robots' internals has to be protected from radiation, since radiation can be more or less damaging to different types of materials \cite{radiationEffectsInMaterials}.
+    
+    %\item The robot is required to have enough space to fit scientific tools inside the base. 
     %\item The distance between ground and chassis should be at least 50 cm and the width of the robot should be the same as an average car. 
     %\item The robot needs the vision of the distance of at least 10 meters, since the hazards of sink holes, cliffs and other hazardous areas could be present.
     %\item A camera with 360 degree of view should be implemented under the base \cite{Lidar360}. %A way to apprehend damages to the camera by the environment, the camera will be surrounded with acrylic panzer glass\cite{Lidar360}.
@@ -61,4 +22,47 @@ Furthermore the problem with self-triangulating towards hazardous environments, 
     %\item The robot needs a redundant circuit of electronics, such as if the system breaks down a backup system can still operate the robot.
    % \item The wheels of the robot needs to have a high friction due to the sand surface on Mars\cite{sand}.
 \end{itemize}
+
+\section{Detection} \label{ch:detectionHades}
+In this section the implementation of sensors for detection will be overlooked and referred to the requirements.
+
+\subsection{LIDAR}
+To get a accurate 3D image of a distance-view of above 10 meters, see section \ref{ch:Designrequiremnts}. Hades will need a LIDAR sensor.
+
+\subsection{Radar}
+To collect a 360${^\circ}$ field of view, the radars will be set up in a manner where the degree of vision would be equal to 360${^\circ}$, see section \ref{ch:Designrequiremnts}.
+
+\subsection{ROS}
+In this project ROS will be used as framework to interact with Hades. ROS is an operation system which comes with a collection of libraries and different tools.\\
+The idea with ROS is to connect different nodes through topics. On each node there is a topic that can be subscribed or published to. When there is published or subscribed on a topic it is received in a message that contain the data of this topic. The data can then be used in different programs, to interact with the robot or get information about location and visualization. \\
+Before all of this can work there is the need for ROS-master. The ROS-master keeps track of every topic which has been subscribed or published to \cite{ROSwiki}.
+
+\subsection{Conclusion}
+Solutions to the requirement of distance and 360${^\circ}$ of cameras and sensors, will be fulfilled by either one of the options by using the ROS nodes.\\
+The LIDAR and Radar has been chosen to cover and fulfill the detection requirements for Hades and make a clear visualization of the view.
+
+\section{Movement} \label{ch:MovementHades}
+In this section the different movement components will be stated.
+
+\subsection{Odometry}
+There is a visual odometry and a wheel based odometry. The aim in this project is to combine the feed from both the visual and wheel based odometry to generate a better localization of the robot in the map.
+
+\subsection{Wheels}
+Wheels will be used as the means to deliver traction for Hades, due to the maneuverability, endurance, low weight and friction, see section \ref{ch:Wheels}.
+%The wheels will be made of a hollow mesh that is formed in a wheel Sharp couture, so the wheels is not prone to puncture. Furthermore the wheels needs a design that makes the robot able to move in sand and be able to drive over rocks, see section \ref{ch:Designrequiremnts}. \\
+%The wheels is equipped with odometry and should therefor be able to detect itself in the perceived map. Hereby, with help from the sensors, Hades should be able to stop before entering hazardous environments.
+
+\subsection{Position}
+The position or pose as it is called in robotics. The position description is depending on how many planes Hades has to traverse. If Mars' surface was flat, Hades would move in a bi-dimensional plane, but Hades has to traverse an euclidean space due to Mars environment, read chapter \ref{ch:environmentOnMars}.
+In a three-dimensional euclidean space the axis is called x, y and z. The mathematical expression for the robot is given by the x, y and z coordinates and the heading is given by an angle theta.
+
+
+
+\subsection{Conclusion}
+With respect to section \ref{ch:Designrequiremnts}, the wheels will have a high friction due to the hollow mesh wheels. Position of Hades is dependant of the transverse.\\
+Furthermore the problem with self-triangulating towards hazardous environments, the odometry will be chosen so that this will fulfill the requirements.
+
+\section{Power Source}
+RTG offers a dual solution of generating electricity for Hades, but also as a heating component to protect the robots sensory equipment from freezing up\ref{Rtg}.
+
 

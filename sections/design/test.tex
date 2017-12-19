@@ -1,6 +1,8 @@
-\chapter{Test}
+\chapter{Acceptance Test}\label{ch:Tests}
+In this chapter the delimited requirements will be tested. First the test site will be presented by a plan view and a table of objects from the test site.
+
 \section{Test site}
-The test site consist of the obstacles stated in table \ref{tab:obstacles}. Pictures of the test site can be found in chapter \ref{ch:testSite}.
+The test site consist of the obstacles stated in table \ref{tab:obstacles}. Pictures of the test site can be found in Appendix A.
 
 \begin{table} [h]
     \centering
@@ -8,203 +10,234 @@ The test site consist of the obstacles stated in table \ref{tab:obstacles}. Pict
      \hline
      Obstacles & \multicolumn{2}{c|}{Size} \\
      \hline
-     Football table & Length 145cm & Width 75cm \\
+     Football table & Length 145 cm & Width 75 cm \\
      \hline
-     Bucket & Diameter 35cm & \\
-    \hline
-     Bench & Length 200cm & Width 40cm \\
+     Bench & Length 200 cm & Width 40 cm \\
      \hline
-     Carpet & Length 200cm & Width 115cm \\
+     Carpet & Length 200 cm & Width 115 cm \\
      \hline
-     Small pot & Length 35cm & Width 35cm \\
+     Small pot & Length 35 cm & Width 35 cm \\
      \hline
-     Big pot & Length 95cm & Width 40cm \\
+     Big pot & Length 95 cm & Width 40 cm \\
      \hline
-     Upper staircase  & Length 180cm & Width 115cm \\
+     Upper staircase & Length 180 cm & Width 115 cm \\
      \hline
-     Lower staircase  & Length 600cm & Depth 18cm \\
+     Lower staircase & Length 600 cm & Depth 18 cm \\
      \hline
+     Beer can & Height 16 cm & Diameter 6 cm \\
+     \hline
+     Wooden pole & Height 41 cm & Width 9 cm\\
+     \hline 
     \end{tabu}
     \caption{Table of the sizes of all obstacles from the test site}
     \label{tab:obstacles}
 \end{table}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{figures/layout.jpg}
+    \includegraphics[width=\textwidth]{figures/plantegning.jpg}
     \caption{Test site layout} 
     \label{fig:layout} 
 \end{figure}
 \newpage
 
 %
+%
 % Test 1
+%
 %
 
 \section{Test 1}
-Purpose of test 1: Communication between the robot, ROS and the computer.\\
-The motor control of the turlebot will be testet. First the host computer gets the following commands:\\
-1. \texttt{roscore}\\ 
+The requirement, "The robot has to be able to drive with a distance of 8 m from the router without dropping the connection", is tested by placing the turtlebot near the router's position and drive it 8 m in the opposite direction.\\ 
+\newline
+First the host computer gets the following commands:
+
+1. \texttt{roscore}
+
 2. \texttt{roslaunch\_bringup minimal.launch}\\
-Then the user computer gets the following commands:\\ 
+Then the user computer gets the following commands:
+
 1. \texttt{roslaunch turtlebot\_teleop keyboard\_teleop.launch}\\
-The user computer should now be able to control the turtlebot. 
-
-\subsection{1st run}
-What was done:\\ 
-The Robots velocity was set to 0.2 m/s. The robot was steered with \texttt{Roslaunch turtlebot\_teleop keyboard\_teleop.launch} from the computer where the keyboard was used to control the robot.\\
-The robot would then move accordingly to the keys 'J', 'L', 'I', ',' and 'K'.
+The user computer should now be able to control the turtlebot.\\
+The robot was steered with \texttt{Roslaunch turtlebot\_teleop keyboard\_teleop.launch} from the computer, where the keyboard was used to control the robot.\\
+The robot would then move accordingly to the keys 'J', 'L', 'I', ',' and 'K'.\\
+\newline
+\textbf{Controls:}
+\begin{minipage}[t]{.5\textwidth}
 \begin{itemize}
-    \item J for left.
-    \item L for right.
-    \item I for forward.
-    \item , for backwards.
-    \item K for stopping.
+    \item J for turning left
+    \item L for turning right
+    \item I for forward
 \end{itemize}
-What happened:\\
-The turtlebot had no problems being controlled manually. The connection between computer and ROS MASTER was established and working well. When moving on the carpet, the velocity fell and first after second try the turtlebot would push forward, and would not get stuck.\\
-Since it was controlled manually, it could not measure itself towards the obstacles, therefore it had no problem running beneath the staircase and under the football table. 
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+    \begin{itemize}
+    \item , for backwards
+    \item K for stopping
+    \end{itemize}
+\end{minipage}
 
-\subsection{2nd run}
-What was done:\\
-The turtlebot velocity was set to 0.8 m/s and steered as mentioned in the 1st run.\\
-What happened:\\
-The turtlebot  had to be stopped a couple of times due to the high speed. When using the \texttt{teleop} package, the turtlebot experienced some delay, and when turning and moving forward it was a problem to stop.
+\subsection{Result}
+The robot drove 8 m without dropping the connection.\\
+Test 1 was a success and met the standards of the requirement.
 
-\subsection{3rd run}
-What was done: \\
-In this test the velocity was set to 0.4 m/s and steered as mentioned in the 1st run. There was also an attempt to see if the cliff sensor worked in manual mode.\\
-What happened:\\
-The turtlebot had no problems being controlled, but the cliff sensor did not work since the host computer did not run \textit{g\_mapping} node. 
-
-
-
+%
 %
 % Test 2
 %
+%
 
 \section{Test 2}
-Purpose of test 2: Detecting Obstacles.\\ 
-First the host computer gets the commands:\\
-1. \texttt{roscore}\\
-2. \texttt{roslaunch\_bringup minimal.launch}\\
+The frontier\_exploration node is tested by making a 5x5 m map for the turtlebot to explore.\\
+\newline
+The host computer got the commands:
+
+1. \texttt{roscore} 
+
+2. \texttt{roslaunch turtlebot\_bringup minimal.launch}
+
 3. \texttt{roslaunch turtlebot\_navigation gmapping\_demo.launch}\\
-On the user computer the commands is written in two seperate terminals:\\
-1. \texttt{roslaunch turtlebot\_teleop keyboard\_teleop}\\
-2. \texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch.}\\
-A window will appear with robot vision. The terminal with the \textit{teleop package} keyboard can be used to move the turtlebot. The window will make a map with obstacles.
-It will be tested with different speeds to see the better result.
+The user computer was given the commands in two different terminals:
 
-\subsection{1st run}
-What was done:\\
-The turtlebot was controlled by the user computer manually, while it was mapping and creating a 2D map in Rviz. The turtlebot had a speed of 0.4 m/s. The turtlebot had to avoid obstacles and drive over different terrain, such as a carpet.\\
-What happened:\\
-The turtlebot had no problems being controlled manually and it detected the obstacles as expected while mapping. The turtlebot also had no problems driving over the carpet.
+1. \texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch}
 
-\subsection{2nd run}
-What was done:\\
-The speed was changed to 0.8 m/s and steered as mentioned in the 1st run.\\
-What happened:\\
-The turtlebot had difficulties being controlled manually and the mapping in Rviz could not keep up with the turtlebot's movements. The turtlebot could, with this speed, easier drive over the carpet than with the slower speed.
+2. \texttt{roslaunch turtlebot\_samples exploration.launch}\\
+Here it should be possible to make a polygon area in Rviz by using publishing points, which the robot will explore.
 
-\subsection{3rd run}
-What was done:\\
-The speed was changed to 0.2 m/s and steered as mentioned in the 1st run.\\
-What happened:\\
-Because of the slower speed in 3rd run, Rviz had a chance to keep up with the turtlebot's mapping, which resulted in the map being more detailed compared to 2nd run. The robot had difficulties driving over carpet, but succeeded after trying two times.
+\subsection{Result}
+The robot explored the 5x5 m map.\\
+Test 2 was a success and met the standards of the requirement.
 
+%
 %
 % Test 3
 %
+%
 
 \section{Test 3}
-Purpose of test 3: Path-planning, the movement of base autonomously. 
-1. \texttt{roscore}\\
+The requirement, "It has to be able to move 5 m in 1 min", is tested.\\ 
+\newline
+First the host computer gets the following commands:
+
+1. \texttt{roscore}
+
 2. \texttt{roslaunch\_bringup minimal.launch}\\
-3. \texttt{roslaunch turtlebot\_navigation gmapping\_demo.launch}\\
-On the user computer the commands is written in the terminal:\\
-1. \texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch.}\\
-A window will appear with robot vision, using nav 2D goal to make a path for the turtlebot.
+Then the user computer gets the following commands:
 
-\subsection{1st run}
-What was done:\\
-The software capability to autonomously navigate the robot around objects towards a goal was tested.\\
-What happened:\\
-Max\_vel\_x was set as default.\\
-It was able to map and detect  the soccer table, which it managed to drive under on its route towards its goal. It also detected the carpet, which it managed to pass over, but upon detecting the difference in surface friction on top of the carpet, it stopped momentarily, before it continued on its path.\\
-The test was stopped, since a lot of people was passing through and the software had trouble managing so many moving obstacles around its sensor.
+1. \texttt{roslaunch turtlebot\_teleop keyboard\_teleop.launch}\\
+The user computer should now be able to control the turtlebot.\\
+The same procedure is done in this test as in test 1.
 
-\subsection{2nd run}
-What was done:\\
-Max\_vel\_x parameter was changed to 0.2, to see if the robot reacted differently with a lower velocity.\\
-What happened:\\
-With the low velocity, the robots mapping process was more detailed. Which resulted in the sensors observed the obstacles and avoided accordingly.
 
-\subsection{3rd run}
-What was done:\\
-Max\_vel\_x parameter was changed to 0.005, to see if the robot reacted differently with such a low velocity.\\
-What happened:\\
-The test failed due to the velocity setting was too low.
+\subsection{Result}
+The turtlebot moved 5 m in a straight line with the time of 0.28 seconds.\\
+Test 3 was successful and met the standards of the requirement. 
 
+%
 %
 % Test 4
 %
+%
 
-\section{Test 4} 
-What is the purpose of test 4:\\
-Testing out frontier exploration will combine test 1, 2 and 3. Detecting Obstacles.\\ 
-The host computer got the commands:\\
-1.\texttt{roscore} 
-2.\texttt{roslaunch turtlebot\_bringup minimal.launch}\\
-3.\texttt{roslaunch turtlebot\_navigation gmapping\_demo.launch}\\
-The user computer was given the commands in two different terminals:\\
-1.\texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch}\\
-2.\texttt{roslaunch turtlebot\_samples exploration.launch}\\
-Here it should be possible to make a polygon area in Rviz by using publishing points, that the robot will explore.
+\section{Test 4}
+The requirement, "It has to be able to turn 360${^\circ}$ in under a minute", is tested.\\ 
+The same procedure is done in this test as in test 1 and test 3.
 
-\subsection{1st run}
-What was done:\\
-A unknown environment was set up.\\ 
-The group then entered a polygon with the publish points in Rviz, to make the robot explore that environment, with the speed at a default setting at 0.55.\\
-What happened:
-In this run the robot behaved nicely with the exploration node, but when it was forced to go out over the stairs via 2d nav, the robot wend into recovery mode and failed to continue. A reboot was necessary to make the turtlebot react normal again
+\subsection{Result:}
+The turtlebot rotated 360${^\circ}$ with a time of 9 seconds.\\
+Test 4 was successful and met the standards of the requirements
 
-
-\subsection{2nd run}
-What was done:\\
-The robot was again set to explore a new area. The velocity was set to 0.2.\\
-In this test the group wanted to see whether the cliff sensor worked.\\
-What happened:\\
-In this test, the navigation failed. There was a lot of different people that kept on passing the sensor. We observed that the robot made a static wall in the map due to all the passing people, and it would not drive further.\\
-The group pinpointed a location for the robot to start driving, which was the lower staircase. The robot would then drive until the infrared sensor underneath its chassis could sense a drop, then it would redo this until it was parallel with the staircase.
-
-\subsection{3rd run}
-What was done:\\
-The robot was again set to explore a new area. The velocity was set to 0.8.\\
-What happened:
-In this run with 0.8, the turtlebot had difficulty in making a route to follow. It failed to explore any part of the selected area, it went into recovery mode and stopped working.
-
+%
 %
 % Test 5
 %
+%
 
 \section{Test 5}
-What is the purpose of test 5: \\
-Redoing test 4, but with extra weight.
+The requirement, "The robot has to avoid obstacles with a height of more than 16 cm, with a distance of 20 cm away from the obstacles", is tested by putting the obstacle, a wooden pole, 2 m away from the robot. Then \texttt{2-D\_nav} is used to navigate the robot to the other side of the object.\\ 
+\newline
+First the host computer gets the commands:
 
-\subsection{1st run}
-What was done:havent done yet
-\\
-What happened:havent done yet
+1. \texttt{roscore}
 
-\subsection{2nd run}
-What was done:havent done yet
-\\
-What happened:havent done yet
+2. \texttt{roslaunch\_bringup minimal.launch}
 
-\subsection{3rd run}
-What was done:havent done yet
-\\
-What happened:havent done yet
+3. \texttt{roslaunch turtlebot\_navigation gmapping\_demo.launch}\\
+On the user computer the command is given:
 
+1. \texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch.}\\
+The program Rviz will open and the turtlebot was controlled by the user computer with \texttt{2-D\_nav}, while it was navigating and creating a 2D map in Rviz.
 
+\subsection{Result}
+The turtlebot detected the wooden pole, calculated a route around it and avoided it without a problem, without getting closer than 30 cm to it. See figure \ref{fig:30cm} for the calculated route.\\
+Test 5 was successful and met the standards of the requirement.\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/30cm.png}
+    \caption{avoiding obstacle} 
+    \label{fig:30cm} 
+\end{figure}
+\newpage
 
+%
+%
+% Test 6
+%
+%
+
+\section{Test 6}
+The requirement, "The robot needs to be able to detect obstacles, with a minimum height 16 cm and a width of 3 cm, at a distance of up to 3.3 m", is tested by placing a wooden pole 4 m in front of the robot. Then by manual control, bringing the turtlebot closer to the object until the distance is 3.3 m.\\ 
+\newline
+First the host computer gets the commands:
+
+1. \texttt{roscore}
+
+2. \texttt{roslaunch\_bringup minimal.launch}
+
+3. \texttt{roslaunch turtlebot\_navigation gmapping\_demo.launch}\\
+On the user computer the commands is written in the terminal:
+
+1. \texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch.}
+
+2. \texttt{roslaunch turtlebot\_teleop keyboard\_teleop}\\
+The program Rviz will open and by using the teleop it is possible to move the turtlebot towards the object. When the objects appears in rviz, a measurement will be made.
+
+\subsection{Result}
+The turtlebot detected the wooden pole within the 3.3 m distance.\\
+Test 6 was successful and met the standards of the requirement.
+%The turtlebot could not see the first object, which was a sign with a reflective surface. So the main object was tested instead, and this was a log without any reflective surfaces.
+%The object would then appear at a 3.3 meters distance, which means this test was successful, and met the standards of the requirement.
+
+%
+%
+% Test 7
+%
+%
+
+\section{Test 7} 
+The requirement, "The robot needs to be able to detect ledges at distances of 2 m or more", is tested by placing the turtlebot 2 m from the staircase at the test site, with its direction faced towards the staircase. Using the exploration node, the area of stairs will be marked and explored.\\ 
+\newline
+The host computer got the commands:
+
+1. \texttt{roscore} 
+
+2. \texttt{roslaunch turtlebot\_bringup minimal.launch}
+
+3. \texttt{roslaunch turtlebot\_navigation gmapping\_demo.launch}\\
+The user computer was given the commands in two different terminals:
+
+1. \texttt{roslaunch turtlebot\_rviz\_launchers view\_navigation.launch}
+
+2. \texttt{roslaunch turtlebot\_samples exploration.launch}\\
+Using publish points, it will then explore the area chosen.
+%To test this, we placed the robot 2 metres away from the lower staircase, with its direction faced towards the staircase.\\
+%We then check the rviz map, if it shows whether there is a ledge or not, in the direction faced.
+
+\subsection{Result}
+The robot detected a "fall" in the map before 2 m, see figure \ref{fig:ledge}, but it did not stop before the cliff-sensor of the robot was activated at the very edge of the stairs.\\
+Test 7 was successful and met the standards of the requirement.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/ledgePicture.png}
+    \caption{Lower staircase ledge} 
+    \label{fig:ledge} 
+\end{figure}
